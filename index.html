@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hypertune Labs</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div class="background-container">
+        <video autoplay muted loop playsinline class="background-video">
+            <source src="video/nightsky.mp4" type="video/mp4">
+        </video>
+        <div class="background-overlay"></div>
+    </div>
+    
+    <main class="hero-section">
+        <div class="content-container">
+            <h1 class="headline">STAY TUNED.</h1>
+            <p class="subheadline">Hypertune Labs Creates Solutions For Industry, Productivity, Lifestyle, and Beyond.</p>
+            
+            <div class="contact-section">
+                <button class="contact-trigger" id="contactTrigger">Get In Touch</button>
+                <div class="email-form-container" id="emailForm">
+                    <form class="email-form" id="emailFormElement">
+                        <input 
+                            type="email" 
+                            id="emailInput" 
+                            placeholder="your@email.com" 
+                            required
+                            autocomplete="email"
+                        >
+                        <textarea 
+                            id="messageInput" 
+                            placeholder="Your message..." 
+                            rows="4"
+                            required
+                        ></textarea>
+                        <button type="submit" class="submit-btn">Send</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+    
+    <script src="script.js"></script>
+</body>
+</html>

@@ -2,6 +2,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const contactTrigger = document.getElementById('contactTrigger');
     const emailForm = document.getElementById('emailForm');
     const emailFormElement = document.getElementById('emailFormElement');
+    const nameInput = document.getElementById('nameInput');
     const emailInput = document.getElementById('emailInput');
     const messageInput = document.getElementById('messageInput');
     const submitBtn = document.querySelector('.submit-btn');
@@ -21,7 +22,7 @@ document.addEventListener('DOMContentLoaded', function() {
             
             // Focus input after animation
             setTimeout(() => {
-                emailInput.focus();
+                nameInput.focus();
             }, 300);
         }
     });
@@ -36,14 +37,14 @@ document.addEventListener('DOMContentLoaded', function() {
         const email = emailInput.value.trim();
         const message = messageInput.value.trim();
         
-        if (email && isValidEmail(email) && message) {
+        if (name && email && isValidEmail(email) && message) {
             isSubmitting = true;
             submitBtn.textContent = 'Sending...';
             submitBtn.disabled = true;
             
             try {
                 // Send email using EmailJS
-                await sendEmail(email, message);
+                await sendEmail(name, email, message);
                 
                 // Show success
                 submitBtn.textContent = 'Sent ✓';
@@ -51,6 +52,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 submitBtn.style.borderColor = 'rgba(76, 175, 80, 0.4)';
                 
                 // Reset form
+                nameInput.value = '';
                 emailInput.value = '';
                 messageInput.value = '';
                 
@@ -81,6 +83,12 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         } else {
             // Shake animation for invalid input
+            if (!name) {
+                nameInput.style.animation = 'shake 0.3s';
+                setTimeout(() => {
+                    nameInput.style.animation = '';
+                }, 300);
+            }
             if (!email || !isValidEmail(email)) {
                 emailInput.style.animation = 'shake 0.3s';
                 setTimeout(() => {
@@ -102,6 +110,7 @@ document.addEventListener('DOMContentLoaded', function() {
             emailForm.classList.remove('visible');
             contactTrigger.classList.remove('hidden');
             isFormVisible = false;
+            nameInput.value = '';
             emailInput.value = '';
             messageInput.value = '';
         }

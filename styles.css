@@ -217,6 +217,7 @@ body {
     transition-delay: 0.1s;
 }
 
+#nameInput,
 #emailInput,
 #messageInput {
     background: rgba(255, 255, 255, 0.05);
@@ -230,23 +231,31 @@ body {
     width: 100%;
     outline: none;
     transition: all var(--transition-fast);
+}
+
+#nameInput,
+#emailInput {
+    resize: none;
+}
+
+#messageInput {
     resize: vertical;
 }
 
-#emailInput {
-    width: 100%;
-}
 
 #messageInput {
     min-height: 100px;
     font-family: inherit;
 }
 
+#nameInput::placeholder,
 #emailInput::placeholder,
 #messageInput::placeholder {
     color: var(--color-text-secondary);
 }
 
+
+#nameInput:focus,
 #emailInput:focus,
 #messageInput:focus {
     background: rgba(255, 255, 255, 0.08);
@@ -309,6 +318,7 @@ body {
 
 /* Focus styles for accessibility */
 .contact-trigger:focus-visible,
+#nameInput:focus-visible,
 #emailInput:focus-visible,
 #messageInput:focus-visible,
 .submit-btn:focus-visible {

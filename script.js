@@ -32,6 +32,7 @@ document.addEventListener('DOMContentLoaded', function() {
         
         if (isSubmitting) return;
         
+        const name = nameInput.value.trim();
         const email = emailInput.value.trim();
         const message = messageInput.value.trim();
         
@@ -113,23 +114,23 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     // Send email function
-    async function sendEmail(email, message) {
+    async function sendEmail(name, email, message) {
         // Using EmailJS service
         // You'll need to set up EmailJS at https://www.emailjs.com/
         // Replace these with your EmailJS service ID, template ID, and public key
         
-        const serviceID = 'YOUR_SERVICE_ID'; // Replace with your EmailJS service ID
-        const templateID = 'YOUR_TEMPLATE_ID'; // Replace with your EmailJS template ID
-        const publicKey = 'YOUR_PUBLIC_KEY'; // Replace with your EmailJS public key
+        const serviceID = 'service_u2gpw23'; // Replace with your EmailJS service ID
+        const templateID = 'template_hzahfbd'; // Replace with your EmailJS template ID
+        const publicKey = '5Cu-p0GRgE7DqcysM'; // Replace with your EmailJS public key
         
         // If EmailJS is not configured, use mailto as fallback
-        if (serviceID === 'YOUR_SERVICE_ID' || templateID === 'YOUR_TEMPLATE_ID' || publicKey === 'YOUR_PUBLIC_KEY') {
-            // Fallback to mailto link
-            const subject = encodeURIComponent('Contact from Hypertune Labs Website');
-            const body = encodeURIComponent(`From: ${email}\n\nMessage:\n${message}`);
-            window.location.href = `mailto:james@hypertunelabs.com?subject=${subject}&body=${body}`;
-            return Promise.resolve();
-        }
+        // if (serviceID === 'YOUR_SERVICE_ID' || templateID === 'YOUR_TEMPLATE_ID' || publicKey === 'YOUR_PUBLIC_KEY') {
+        //     // Fallback to mailto link
+        //     const subject = encodeURIComponent('Contact from Hypertune Labs Website');
+        //     const body = encodeURIComponent(`From: ${email}\n\nMessage:\n${message}`);
+        //     window.location.href = `mailto:james@hypertunelabs.com?subject=${subject}&body=${body}`;
+        //     return Promise.resolve();
+        // }
         
         // Load EmailJS library dynamically if not already loaded
         if (typeof emailjs === 'undefined') {
@@ -139,6 +140,7 @@ document.addEventListener('DOMContentLoaded', function() {
         
         const templateParams = {
             to_email: 'james@hypertunelabs.com',
+            from_name: name,
             from_email: email,
             message: message,
             reply_to: email
